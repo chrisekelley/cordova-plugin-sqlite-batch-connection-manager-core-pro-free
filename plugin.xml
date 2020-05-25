@@ -1,0 +1,57 @@
+<plugin id="cordova-plugin-sqlite-batch-connection-manager-core-pro-free" version="0.0.1-dev">
+  <js-module src="www/sqlite-batch-connection-manager.js" name="sqliteBatchConnectionManager">
+    <runs/>
+  </js-module>
+  <platform name="android">
+    <config-file target="config.xml" parent="/*">
+      <feature name="SQLiteBatchConnectionManager">
+        <param name="android-package" value="io.sqlc.SQLiteBatchConnectionManager"/>
+      </feature>
+    </config-file>
+    <source-file src="src/android/SQLiteBatchConnectionManager.java" target-dir="src/io/sqlc"/>
+    <source-file src="dist-dependencies/SQLiteBatchCore.java" target-dir="src/io/sqlc"/>
+    <lib-file src="dist-dependencies/sqlite-connection-core-glue.jar" />
+  </platform>
+  <platform name="ios">
+    <config-file target="config.xml" parent="/*">
+      <feature name="SQLiteBatchConnectionManager">
+        <param name="ios-package" value="SQLiteBatchConnectionManager"/>
+      </feature>
+    </config-file>
+    <source-file src="src/ios/SQLiteBatchConnectionManager.m"/>
+    <header-file src="dist-dependencies/SQLiteBatchCore.h" />
+    <source-file src="dist-dependencies/SQLiteBatchCore.m" />
+    <header-file src="dist-dependencies/sqlite3.h" />
+    <source-file
+      src="dist-dependencies/sqlite3.c"
+      compiler-flags="
+        -DSQLITE_DEFAULT_SYNCHRONOUS=3
+        -DSQLITE_THREADSAFE=1
+        -DHAVE_USLEEP
+        -DHAVE_UTIME
+        " />
+    <header-file src="dist-dependencies/sqlite-connection-core.h" />
+    <source-file src="dist-dependencies/sqlite-connection-core.c" />
+  </platform>
+  <platform name="osx">
+    <config-file target="config.xml" parent="/*">
+      <feature name="SQLiteBatchConnectionManager">
+        <param name="osx-package" value="SQLiteBatchConnectionManager"/>
+      </feature>
+    </config-file>
+    <source-file src="src/ios/SQLiteBatchConnectionManager.m"/>
+    <header-file src="dist-dependencies/SQLiteBatchCore.h" />
+    <source-file src="dist-dependencies/SQLiteBatchCore.m" />
+    <header-file src="dist-dependencies/sqlite3.h" />
+    <source-file
+      src="dist-dependencies/sqlite3.c"
+      compiler-flags="
+        -DSQLITE_DEFAULT_SYNCHRONOUS=3
+        -DSQLITE_THREADSAFE=1
+        -DHAVE_USLEEP
+        -DHAVE_UTIME
+        " />
+    <header-file src="dist-dependencies/sqlite-connection-core.h" />
+    <source-file src="dist-dependencies/sqlite-connection-core.c" />
+  </platform>
+</plugin>
