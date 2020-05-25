@@ -1,4 +1,5 @@
 sqlite-amalgamation-*
+sqlite-batch-connection-core/
 demo/node_modules/
 demo/package-lock.json
 demo/platforms/
